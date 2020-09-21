@@ -1,19 +1,22 @@
-package com.gyu.restfulwebservice.user;
+package com.gyu.restfulwebservice.service;
 
 import com.gyu.restfulwebservice.error.NotFoundException;
+import com.gyu.restfulwebservice.model.User;
+import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
+@Service
 public class UserDaoService {
     private static List<User> users = new ArrayList<>();
 
+    public static int userCount = 3;
+
     static {
-        users.add(new User( "Kenneth"));
-        users.add(new User( "Alice"));
-        users.add(new User("Elena"));
+        users.add(new User(1L, "Kenneth"));
+        users.add(new User(2L, "Alice"));
+        users.add(new User(3L, "Elena"));
     }
 
     public List<User> findAll() {
@@ -22,7 +25,6 @@ public class UserDaoService {
 
     public User save(User user) {
         users.add(user);
-
         return user;
     }
 
